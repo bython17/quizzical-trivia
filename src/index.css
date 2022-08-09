@@ -1,13 +1,230 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@700&display=swap");
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+}
+
+.App {
+  position: relative;
+  background-color: #f5f7fb;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.blob {
+  position: absolute;
+  z-index: -1;
+}
+
+.blob.top-right {
+  right: -5rem;
+  top: -9rem;
+}
+
+.blob.bottom-left {
+  left: -5rem;
+  bottom: -5rem;
+  transform: rotate(45deg);
+}
+
+/* Start screen */
+.start_screen--wrapper {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start_screen--container {
+  text-align: center;
+}
+
+.start_screen--container h2 {
+  margin-bottom: 10px;
+  font-family: "Karla";
+  font-weight: 700;
+  font-size: 31.25px;
+  text-align: center;
+
+  color: #293264;
+}
+
+.start_screen--container p {
+  margin-bottom: 30px;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+
+  color: #293264;
+}
+
+.start_screen--container button {
+  border: none;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  background: #4d5b9e;
+  padding: 16px 30px;
+  border-radius: 15px;
+
+  color: #f5f7fb;
+  cursor: pointer;
+}
+
+.start_screen--container button:active {
+  background-color: #2e365e;
+}
+
+/* Questions Container */
+.questions--wrapper {
+  padding: 30px 30px;
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.questions--container {
+  max-width: 800px;
+}
+
+/* Indivisual Question */
+.question--question_text {
+  margin-bottom: 13px;
+  font-family: "Karla";
+  font-weight: 700;
+  font-size: 1.2rem;
+
+  color: #293264;
+}
+
+.question--alternative_container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.question--alternative {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 12px;
+  text-align: center;
+  color: #293264;
+
+  display: block;
+  margin-right: 12px;
+  margin-top: 5px;
+
+  background: transparent;
+  padding: 6px 20px;
+  border: 0.1rem solid #4d5b9e;
+  border-radius: 9px;
+  cursor: pointer;
+
+  transition: 0.2s ease-in;
+}
+
+.question--alternative.selected {
+  border-color: #d0d6f5;
+  background-color: #d0d6f5;
+}
+
+.question--alternative.correct {
+  background-color: #94d7a2;
+  border-color: #94d7a2;
+}
+
+.question--alternative.wrong {
+  opacity: 70%;
+}
+
+.question--alternative.wrong.selected {
+  background-color: #f8bcbc;
+  border-color: #f8bcbc;
+  opacity: 70%;
+}
+
+.question--alternative:active {
+  outline: none;
+}
+
+.question--alternative:focus {
+  outline: none;
+}
+
+@media (max-width: 450px) {
+  .question--alternative {
+    margin-top: 12px;
+  }
+}
+
+.question--separator {
+  height: 1px;
+  margin-block: 15px;
+  background-color: #d2d2e2;
+}
+
+.questions--results {
+  margin-right: 10px;
+  display: inline;
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 14px;
+  visibility: hidden;
+  animation: 0.4s fadeIn ease-in forwards;
+  color: #293264;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.questions--check_answer {
+  border: none;
+  margin-top: 20px;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+
+  background: #4d5b9e;
+  padding: 14px 22px;
+  border-radius: 15px;
+
+  color: #f5f7fb;
+  cursor: pointer;
+}
+
+.questions--check_answer:disabled {
+  background-color: #6d7392;
+}
+
+.loading--text {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 19px;
+  color: #293264;
 }

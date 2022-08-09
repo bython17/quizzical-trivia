@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Blobs from "./components/Blobls";
+import Questions from "./components/Questions";
+import StartScreen from "./components/StartScreen";
 
-function App() {
+const App = () => {
+  const [gameStarted, setGameStarted] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Blobs />
+      {!gameStarted ? (
+        <StartScreen startQuiz={() => setGameStarted(true)} />
+      ) : (
+        <Questions />
+      )}
     </div>
   );
-}
+};
 
 export default App;
