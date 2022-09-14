@@ -68,7 +68,6 @@ const Questions = () => {
   };
 
   const checkIfQuestionIsAnswered = (alternatives) => {
-    console.log(alternatives, "its the sucker");
     return alternatives.some(
       ({ isAnswer, isSelected }) => isAnswer && isSelected
     );
